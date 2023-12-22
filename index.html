@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação - XSalle</title>
+
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilo css -->
+    <link rel="stylesheet" href="estilo.css">
+
+    <!--Font Awasome -->
+    <script src="https://kit.fontawesome.com/eda083891d.js" crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <!-- sidebar -->
+        <div class="sidebar">
+            <img src="img/logo.png" class="logo" alt="Logo da documentação">
+            <div class="navegacao">
+                <ul>
+                    <li class="menu-item"><a href="#sobre" onclick="esconderMenu()">Sobre</a></li>
+                    <li class="menu-item"><a href="#db-page" onclick="esconderMenu()">Banco de Dados</a></li>
+                    <li class="menu-item"><a href="#api-page" onclick="esconderMenu()">API's</a></li>
+                    <li class="menu-item"><a href="#data-page" onclick="esconderMenu()">Dados</a></li>
+                    <li class="menu-item"><a href="#dashboard-page" onclick="esconderMenu()">Dashboard</a></li>
+                    <li class="menu-item"><a href="#oportunidades-page" onclick="esconderMenu()">Oportunidades</a></li>
+                    <li class="menu-item"><a href="#cotacoes-page" onclick="esconderMenu()">Cotações</a></li>
+                    <li class="menu-item"><a href="#colaboracao-page" onclick="esconderMenu()">Sala de Colaboração</a>
+                    </li>
+                    <li class="menu-item"><a href="#login-page" onclick="esconderMenu()">Login/Registro</a></li>
+                    <li class="menu-item"><a href="#users-page" onclick="esconderMenu()">Usuários</a></li>
+                    <li class="menu-item"><a href="#empresas-page" onclick="esconderMenu()">Empresas</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- sidebar -->
+
+        <div class="conteudo-site">
+
+            <a href="#" class="menu" onclick="menu()" id="menu"><img src="img/menu.svg" alt="Botão menu do site"></a>
+            <h1>Documentação - XSalle</h1>
+            <hr class="linha-divisoria">
+
+            <!-- Seção sobre -->
+            <section id="sobre">
+                <h2>SOBRE</h2>
+                <hr class="linha-divisoria">
+                <!--Descrição do aplicativo -->
+                <p> O XSalle é uma aplicação web, desenvolvida na ferramenta <strong>Buuble</strong>, que tem como
+                    objetivo
+                    facilitar negociações, oportunidades, compras e vendas no portal da <a
+                        href="https://www.petronect.com.br/">Petronect</a>.
+                </p>
+                <p>
+                    O sistema é integrado a um Bot (Robô de Software) que roda em uma máquina virtual e realiza a busca
+                    de oportunidades de
+                    compras e vendas no portal da Petronect, e envia para o aplicativo web, onde o usuário pode
+                    visualizar as oportunidades
+                    e realizar operações especificas de maneira mais eficiente, rápida e segura.
+                </p>
+                <p>
+                    O sistema trabalha com diversas APIs que são executadas através de workflows, que são executados
+                    através de eventos no Bubble. Também possuí conexão com banco de dados mySQL armazenado no AWS
+                    (Amazon Web Services), que é onde o robô envia e registra as informações das oportunidades e o
+                    XSalle consome essas informações através de APIs.
+                </p>
+
+            </section>
+
+            <!--Seção Banco de Dados-->
+            <section class="section-style" id="db-page">
+                <h3 class="title-secao">BANCO DE DADOS</h3>
+                <hr class="linha-divisoria" style="width: 120px;">
+                <p>
+                    O XSalle possuí um banco de dados mySQL armazenado no AWS (Amazon Web Services), que é onde o robô
+                    envia e registra as informações. O XSalle consome via API as informações do banco de dados para
+                    gerenciar as oportunidades, cotações e salas de colaboração.<br><br>
+                    O banco de dados é conectado via API com o Bubble através de um plugin chamado
+                    <a href="https://bubble.io/plugin/mysql-database-connector-1509350443965x263154429631078140">SQL
+                        Database Connector</a>.
+                </p>
+            </section>
+
+            <!--Seção API's-->
+            <section class="section-style" id="api-page">
+                <h3 class="title-secao">API's</h3>
+                <hr class="linha-divisoria" style="width: 40px;">
+                <p>
+                    O XSalle trabalha com diversas APIs que são executadas através de workflows, as API's são
+                    responsáveis pelas requisições e
+                    distribuição de informações por todo o sistema. As API's são configuradas através de um plugin
+                    chamado
+                    <a href="https://bubble.io/plugin/api-connector-by-zq-1529615964044x536827416258600960">API
+                        Connector</a>.
+                </p>
+
+                <div class="accordion-apis list-apis">
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API Get Listas - Gerar Listas de Oportunidades <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API get_listas<br>
+                                    <strong>Descrição:</strong> API responsável por gerar as listas de
+                                    oportunidades.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/get_listas<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "filtro": "&lt;filtro&gt;",
+    "dt": "&lt;datetime&gt;"
+}
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200,
+    "result": [
+        {
+        "id_lista": 4,
+        "nome": "NOVAS OPORTUNIDADES",
+        "permanente": 1,
+        "oportunidades": [
+            {
+            "id_oportunidade": 1134,
+            "id_lista": 4,
+            "nome": "AQUISICAO DE ATUADOR ELETRICO TIPO DE AC",
+            "id_petronect": "7004136304",
+            "criterio_julgamento": "Por item",
+            "data_fim_periodo_cotacao": "2023-08-02T23:00:00",
+            "moeda": "BRL Real - Brasil",
+            "local_entrega": "São Paulo - SP - BR",
+            "tipo": "Dispensa Item",
+            "empresa": null,
+            "cor": "#dbdbdb",
+            "ativo": 1,
+            "visualizada": 0,
+            "comentarios": "Processo cancelado",
+            "replicado_petronect": 0
+            }
+        ]
+        }
+    ]
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API rename_lista - Renomear Lista <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API rename_lista<br>
+                                    <strong>Descrição:</strong> API responsável por renomear uma lista de
+                                    oportunidades.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/rename_lista<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_lista": &lt;id_lista&gt;,
+    "nome": "&lt;nome&gt;",
+    "dt": "&lt;dt&gt;"
+}
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API create_lista - Criar Lista <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API create_lista<br>
+                                    <strong>Descrição:</strong> API responsável por criar uma lista.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/create_lista<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "nome": "&lt;nome&gt;"
+}
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API delete_lista - Deletar Lista <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API delete_lista<br>
+                                    <strong>Descrição:</strong> API responsável por deletar uma lista.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/delete_lista<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_lista": &lt;id_lista&gt;
+}
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API get_oportunidades - Obter Oportunidades <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API get_oportunidades<br>
+                                    <strong>Descrição:</strong> API responsável por obter as oportunidades.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/get_oportunidades<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_lista": &lt;id_lista&gt;,
+    "filtro": "&lt;filtro&gt;",
+    "dt": "&lt;datetime&gt;"
+}                                          
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200,
+    "result": [
+        {
+        "id_oportunidade": 1,
+        "id_lista": 1,
+        "nome": "PLACA DE MADEIRA",
+        "id_petronect": "001",
+        "criterio_julgamento": "Por item",
+        "data_fim_periodo_cotacao": "2023-07-08T12:00:00",
+        "moeda": "BRL Real - Brasil",
+        "local_entrega": "Minas Gerais - MG - BR\nPernambuco - PE - BR",
+        "tipo": "Dispensa Item",
+        "empresa": null,
+        "cor": "#dbdbdb",
+        "ativo": 1,
+        "visualizada": 0,
+        "comentarios": "Texto\nTexto\nTexto"
+        }
+    ]
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API show_oportunidade - Exibir Oportunidade <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API show_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por exibir uma oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/show_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_oportunidade": &lt;id_oportunidade&gt;
+}                                          
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API delete_oportunidade - Deletar Oportunidade <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API delete_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por deletar uma oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/delete_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_oportunidade": &lt;id_oportunidade&gt;
+}                                          
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API get_itens_oportunidade - Obter Itens da Oportunidade <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API get_itens_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por obter os itens da oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/get_itens_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "dt": "&lt;dt&gt;"
+}                                          
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200,
+    "result": [
+        {
+        "id_item": 1,
+        "numero": "1",
+        "descricao": "Retentor buna N 25,00x 35,00x 7,00mm",
+        "categoria": "Material",
+        "quantidade": "1000.00",
+        "unidade_medida": "Unidade",
+        "data_remessa": "2023-07-08",
+        "moeda": "BRL Real - Brasil",
+        "descricao_longa": "Retentor de óleo ;borracha nitrílica(NBR) ;diâmetro do eixo 25,00mm ;diâmetro externo 35,00mm ;altura\n7,00mm ;Tp: SABO 01543BA ---------- REFERÊNCIA: 4212CPKG50160 / FABRICANTE: KSB ----------\nREFERÊNCIA: 5627 / FABRICANTE: AGEL ---------- REFERÊNCIA: TCS0330 / FABRICANTE: AGEL"
+        }
+    ]
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API update_data_oportunidade - Atualizar Dados da Oportunidade <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API update_data_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por atualizar os dados da
+                                    oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/update_data_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "cor": "&lt;cor&gt;",
+    "data_fim_periodo_cotacao": "&lt;data_fim_periodo_cotacao&gt;",
+    "comentarios": &lt;comentarios&gt;
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API create_anexo - Criar Anexo <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API create_anexo<br>
+                                    <strong>Descrição:</strong> API responsável por criar um anexo.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/create_anexo<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "filename": "&lt;filename&gt;",
+    "url": "&lt;url&gt;"
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API get_anexos_oportunidade - Obter Anexos da Oportunidade <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> get_anexos_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por obter os anexos da oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/get_anexos_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "dt": "&lt;dt&gt;"
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200,
+    "result": [
+        {
+        "id_anexo": 1,
+        "id_oportunidade": "1",
+        "filename": "pixel.png",
+        "url": "//c1e829d625f59735eed4d3cb2f64523c.cdn.bubble.io/f1690241993079x656169324555758200/pixel.png"
+        }
+    ]
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API delete_anexo - Deletar Anexo <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API delete_anexo<br>
+                                    <strong>Descrição:</strong> API responsável por deletar um anexo da
+                                    oportunidade.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/delete_anexo<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "id_anexo": &lt;id_anexo&gt;
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API move_oportunidade - Mover Oportunidade de Lista <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API move_oportunidade<br>
+                                    <strong>Descrição:</strong> API responsável por mover uma oportunidade de
+                                    coluna/lista.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/move_oportunidade<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "id_lista": &lt;id_lista&gt;
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API create_empresa - Criar Empresa <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API create_empresa<br>
+                                    <strong>Descrição:</strong> API responsável por criar uma empresa no banco de
+                                    dados.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/create_empresa<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_bubble_empresa": "&lt;id_bubble_empresa&gt;",
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API get_sala_colaboracao - Obter Sala de Colaboração <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API get_sala_colaboracao<br>
+                                    <strong>Descrição:</strong> API responsável por obter a sala de colaboração.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/get_sala<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_oportunidade": &lt;id_oportunidade&gt;,
+    "dt": "&lt;dt&gt;"
+}                                      
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200,
+    "result": {
+        "id_sala": 2,
+        "id_oportunidade": 1246,
+        "replicado_petronect": 0,
+        "id_ultimo_assunto": 5,
+        "assuntos": [
+        {
+            "id_assunto": 2,
+            "id_sala": 2,
+            "replicado_petronect": 0,
+            "tipo": "livre",
+            "texto_assunto": "teste",
+            "mensagem": "teste teeste",
+            "data_criacao": "2023-07-30T19:39:26",
+            "usuario": "teste@email.com",
+            "anexos_assunto": [
+            {
+                "id_anexo": 1,
+                "id_assunto": 4,
+                "filename": "crab.png",
+                "url": "//c1e829d625f59735eed4d3cb2f64523c.cdn.bubble.io/f1690754408104x197678487832154460/crab.png"
+            }
+            ],
+            "questionarios": [
+            {
+                "id_questionario": 1,
+                "id_assunto": 5,
+                "replicado_petronect": 0,
+                "mensagem": "teste de resposta do questionario",
+                "data_criacao": "2023-07-30T21:07:57",
+                "anexos_questionario": [
+                {
+                    "id_anexo": 1,
+                    "id_questionario": 2,
+                    "filename": "crab.png",
+                    "url": "//c1e829d625f59735eed4d3cb2f64523c.cdn.bubble.io/f1690761069948x671450350402070100/crab.png"
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API create_sala_assunto - Criar Sala de Colaboração com Assunto <i
+                                class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API create_sala_assunto<br>
+                                    <strong>Descrição:</strong> API para criar uma sala de colaboração.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/create_sala_assunto<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_sala": &lt;id_sala&gt;,
+    "tipo": "&lt;tipo&gt;",
+    "texto_assunto": "&lt;texto_assunto&gt;",
+    "mensagem": "&lt;mensagem&gt;",
+    "anexos": "&lt;anexos&gt;",
+    "usuario": "&lt;usuario&gt;"
+}                                 
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-accordion">
+                        <button class="btn-accordion">API create_sala_questionario_assunto - Criar Sala de Colaboração
+                            com Assunto e Questionário <i class="fas fa-angle-down"></i></button>
+                        <div class="content-accordion api-content" style="display: none;">
+
+                            <div class="info-api">
+                                <p>
+                                    <strong>Nome API:</strong> API create_sala_questionario_assunto<br>
+                                    <strong>Descrição:</strong> API para criar uma sala de colaboração com assunto e
+                                    questionário.<br>
+                                    <strong>URL:</strong>
+                                    https://5qine0ky87.execute-api.us-west-2.amazonaws.com/prd/create_sala_questionario_assunto<br>
+                                    <strong>Método:</strong> POST<br>
+                                    <strong>Não possuí Headers</strong>
+                                </p>
+                            </div>
+
+                            <div class="body-api">
+                                <p class="body-title"><strong>Body/Params:</strong> JSON</p>
+                                <pre class="cod-body">
+                                    <pre class="cod-body">
+{
+    "id_assunto": &lt;id_assunto&gt;,
+    "mensagem": "&lt;mensagem&gt;",
+    "anexos": "&lt;anexos&gt;"
+}                     
+                                    </pre>
+                                </pre>
+                            </div>
+
+                            <div class="result-api">
+                                <p class="result-title"><strong>Resultado:</strong> JSON</p>
+                                <pre class="cod-result">
+{
+    "message": null,
+    "status_code": 200
+}
+                                </pre>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Seção Dados-->
+            <section class="section-style" id="data-page">
+                <h3 class="title-secao">DADOS</h3>
+                <hr class="linha-divisoria" style="width: 40px;">
+                <p>
+                    O XSalle possuí dados armazenados também no banco de dados do Bubble, que são utilizados para
+                    realizar operações e preencher dados. Os dados são armazenados em <i>"Data"</i>.
+                </p>
+                <p>
+                    <span style="font-size: 20px;font-weight: 600;">Data Type</span><br><br>
+                    Data Types no Bubble são estruturas utilizadas para definir e armazenar diferentes categorias de
+                    informações, armazenando as informações de cada Type em <i>Data Fields</i>.
+                    <br>
+                    Atualmente o XSalle possuí os seguintes Data Types:
+                </p>
+                <br>
+                <div class="data-types">
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"anexo_api"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>Arquivo - "file" - Data Field de anexo de arquivos</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-types">
+                        <button class="btn-accordion-data"><strong>"board"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>board_description - "text" - Data Field de descrição do board</li>
+                            <li>board_image - "file" - Data Field de imagem do board</li>
+                            <li>board_name - "text" - Data Field de nome do board</li>
+                            <li>board_users - "list of users" - Data Field de lista de usuários do board</li>
+                            <li>boardline - "list of texts" - Data Field de lista de textos boardlines</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-types">
+                        <button class="btn-accordion-data"><strong>"Cotação"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>Base de redução - "text" - Data Field de base de redução</li>
+                            <li>COFINS - "text" - Data Field de COFINS</li>
+                            <li>Descrição longa - "text" - Data Field de descrição longa</li>
+                            <li>Fabricante - "text" - Data Field de fabricante</li>
+                            <li>Faturamento o mínimo - "number" - Data Field de faturamento o mínimo</li>
+                            <li>ICMS - "text" - Data Field de ICMS</li>
+                            <li>IPI - "text" - Data Field de IPI</li>
+                            <li>Item cotado - "text" - Data Field de item cotado</li>
+                            <li>NCM - "number" - Data Field de NCM</li>
+                            <li>Original do material - "number" - Data Field de original do material</li>
+                            <li>Partnumber - "text" - Data Field de partnumber</li>
+                            <li>PIS - "text" - Data Field de PIS</li>
+                            <li>Prazo de entrega - "number" - Data Field de prazo de entrega</li>
+                            <li>Preço - "number" - Data Field de preço</li>
+                            <li>Produto - "text" - Data Field de produto referenciado pela <a href="#"
+                                    class="links-api">API get_itens_oportunidade</a></li>
+                            <li>Texto do material - "text" - Data Field de texto do material</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-types">
+                        <button class="btn-accordion-data"><strong>"Empresa"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>ativa - "yes/no" - Data Field de status ativo</li>
+                            <li>background_img - "image" - Data Field de imagem de fundo</li>
+                            <li>cnpj - "text" - Data Field de CNPJ</li>
+                            <li>dono - "User" - Data Field do usuário proprietário</li>
+                            <li>lista_listas - "List of lists" - Data Field de lista de listas</li>
+                            <li>lista_usuarios - "List of Users" - Data Field de lista de usuários</li>
+                            <li>logo_img - "image" - Data Field de imagem do logo</li>
+                            <li>nome_fantasia - "text" - Data Field de nome fantasia</li>
+                            <li>razao_social - "text" - Data Field de razão social</li>
+                            <li>referencia - "text" - Data Field de referência</li>
+                            <li>referencia_busca - "text" - Data Field de referência de busca</li>
+                            <li>usuario_indicacao - "User" - Data Field de usuário de indicação</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"item_oportunidade"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>categoria - "text" - Data Field de categoria</li>
+                            <li>data_remessa - "date" - Data Field de data de remessa</li>
+                            <li>descricao - "text" - Data Field de descrição</li>
+                            <li>descricao_longa - "text" - Data Field de descrição longa</li>
+                            <li>id_oportunidade_petronect - "text" - Data Field de ID da oportunidade</li>
+                            <li>moeda - "text" - Data Field de moeda</li>
+                            <li>numero_item - "number" - Data Field de número do item</li>
+                            <li>oportunidade - "oportunidade" - Data Field de oportunidade</li>
+                            <li>quantidade - "number" - Data Field de quantidade</li>
+                            <!-- O campo 'Tags' foi omitido pois está marcado como deletado -->
+                            <li>unidade_medida - "text" - Data Field de unidade de medida</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"lista"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>board - "board" - Data Field de board</li>
+                            <li>empresa - "empresa" - Data Field de empresa</li>
+                            <li>lista_oportunidades - "List of oportunidades" - Data Field de lista de oportunidades
+                            </li>
+                            <li>nome - "text" - Data Field de nome</li>
+                            <li>permanente - "yes/no" - Data Field de status permanente</li>
+                            <li>usuario - "User" - Data Field de usuário</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"oportunidade"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>anexos - "List of files" - Data Field de anexos</li>
+                            <li>classificacao - "text" - Data Field de classificação</li>
+                            <li>comentarios - "text" - Data Field de comentários</li>
+                            <li>cor - "text" - Data Field de cor</li>
+                            <li>criterio_julgamento - "text" - Data Field de critério de julgamento</li>
+                            <li>data_extracao - "date" - Data Field de data de extração</li>
+                            <li>data_fim_cotacao - "date" - Data Field de data de fim de cotação</li>
+                            <li>data_inicio_cotacao - "date" - Data Field de data de início de cotação</li>
+                            <li>data_operacao - "date" - Data Field de data de operação</li>
+                            <li>data_publicacao - "date" - Data Field de data de publicação</li>
+                            <li>email_usuario - "text" - Data Field de email do usuário</li>
+                            <li>empresa - "empresa" - Data Field de empresa</li>
+                            <li>id_oportunidade_petronect - "text" - Data Field de ID da oportunidade</li>
+                            <li>list_board - "lista" - Data Field de list_board</li>
+                            <li>lista_items - "List of item_oportunidades" - Data Field de lista de itens</li>
+                            <li>local_entrega - "text" - Data Field de local de entrega</li>
+                            <li>moeda - "text" - Data Field de moeda</li>
+                            <li>nome - "text" - Data Field de nome</li>
+                            <li>sala - "sala_colaboracao" - Data Field de sala</li>
+                            <li>status - "text" - Data Field de status</li>
+                            <!-- O campo 'Tags' foi omitido pois está marcado como deletado -->
+                            <li>texto_busca - "text" - Data Field de texto de busca</li>
+                            <li>tipo - "text" - Data Field de tipo</li>
+                            <li>usuario - "User" - Data Field de usuário</li>
+                            <li>visualizada - "yes/no" - Data Field de visualizada</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"sala_assunto"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>anexos - "List of files" - Data Field de anexos</li>
+                            <li>mensagem - "text" - Data Field de mensagem</li>
+                            <li>questionarios - "List of sala_questionarios" - Data Field de questionários</li>
+                            <li>replicado_petronect - "number" - Data Field de replicado petronect</li>
+                            <li>sala - "sala_colaboracao" - Data Field de sala</li>
+                            <li>texto_assunto - "text" - Data Field de texto do assunto</li>
+                            <li>tipo - "tipo_assunto" - Data Field de tipo de assunto</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"sala_colaboracao"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>anexos_temp - "List of files" - Data Field de anexos temporários</li>
+                            <li>assuntos - "List of sala_assuntos" - Data Field de assuntos</li>
+                            <li>oportunidade - "oportunidade" - Data Field de oportunidade associada</li>
+                            <li>replicado_petronect - "number" - Data Field de status replicado petronect</li>
+                            <li>ultimo_assunto - "sala_assunto" - Data Field do último assunto</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"sala_questionario"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>anexos - "List of files" - Data Field de anexos</li>
+                            <li>assunto - "sala_assunto" - Data Field de assunto</li>
+                            <li>mensagem - "text" - Data Field de mensagem</li>
+                            <li>replicado_petronect - "number" - Data Field de status replicado petronect</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"sql_lista"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>id_lista - "number" - Data Field de ID da lista</li>
+                            <li>nome - "text" - Data Field de nome</li>
+                            <li>permanente - "number" - Data Field de status permanente</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"Tags"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>Cor - "text" - Data Field de cor</li>
+                            <li>Nome - "text" - Data Field de nome</li>
+                            <li>User - "User" - Data Field de usuário associado</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <button class="btn-accordion-data"><strong>"User"</strong><i
+                                class="fas fa-angle-down"></i></button>
+                        <ul class="data-fields" style="display: none;">
+                            <li>Bio - "text" - Data Field de biografia</li>
+                            <li>email_busca - "text" - Data Field de email para busca</li>
+                            <li>empresa - "empresa" - Data Field de empresa associada</li>
+                            <li>Initials - "text" - Data Field de iniciais do nome</li>
+                            <li>list_oportunidade - "List of oportunidades" - Data Field de lista de oportunidades</li>
+                            <li>name - "text" - Data Field de nome</li>
+                            <li>papel - "papel_usuario" - Data Field de papel do usuário</li>
+                            <li>user_pic - "image" - Data Field de imagem do usuário</li>
+                            <li>username - "text" - Data Field de nome de usuário</li>
+                            <li>Creator User - "user" - Data Field de usuário criador</li>
+                            <li>Created Date - "date" - Data Field de data de criação</li>
+                            <li>Modified Date - "date" - Data Field de data de modificação</li>
+                            <li>Slug - "text" - Data Field de slug</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <br>
+                <p>
+                    <span style="font-size: 20px;font-weight: 600;">App Data</span><br><br>
+                    App Data é o banco de dados do Bubble, onde são armazenados os dados do sistema, os dados retornados
+                    pelas API's e também os dados gerados por operações no sistema. Os dados são armazenados em tabelas
+                    e cada coluna representa um <i>"Data Field"</i> de um <i>"Data Type"</i>.
+                    <br><br>
+                    <strong>Atualmente o XSalle possuí em seu App Data os Data Types citados acima em seu banco de
+                        dados.</strong>
+                </p>
+                <br>
+            </section>
+
+            <!-- Seção páginas -->
+            <section id="paginas" class="paginas">
+                <div class="paginas-intro">
+                    <h2 class="title-secao">PAGINAS E TELAS</h2>
+                    <hr class="linha-divisoria">
+                    <ul>
+                        <li><a href="#dashboard-page">1 - Dashboard</a></li>
+                        <li><a href="#oportunidades-page">2 - Oportunidades</a></li>
+                        <li><a href="#cotacoes-page">3 - Cotações</a></li>
+                        <li><a href="#usuarios-page">4 - Usuários</a></li>
+                        <li><a href="#empresas-page">5 - Empresas</a></li>
+                        <li><a href="#perfil-page">6 - Perfil</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Seção dashboard -->
+            <section class="section-style" id="dashboard-page">
+                <h2 class="title-secao">DASHBOARD</h2>
+                <hr class="linha-divisoria" style="width: 120px;">
+                <p>
+                    A página de dashboard do XSalle é a primeira página que o usuário visualiza ao acessar o
+                    sistema,
+                    contendo widgtes com informações e relatórios sobre as oportunidades de compras e vendas. As
+                    informações
+                    são apresentadas através de gráficos e tabelas. O dashboard só é disponibilizado para usuários
+                    membros
+                    que dispõe de uma assinatura paga.
+                </p>
+                <br>
+                <p style="text-align: center;">
+                    <img class="imgs-pages" src="img/dashboard-page.jpeg" alt="Imagem da página Dashboard">
+                    <br><span class="legenda-img">Print da página Dashboard</span>
+                </p>
+
+                <p>
+                    Atualmente a página de dashboard é somente uma imagem estática e não possuí backend, mas em
+                    breve será implementada.
+                </p>
+
+            </section>
+
+            <!-- Seção Oportunidades-->
+            <section class="section-style" id="oportunidades-page">
+                <h2 class="title-secao">OPORTUNIDADES</h2>
+                <hr class="linha-divisoria" style="width: 120px;">
+                <p>
+                    A página de oportunidades é a página principal do XSalle, onde o usuário pode visualizar as
+                    oportunidades de compras e vendas
+                    que foram enviadas pelo Bot. A página é no estilo kaban e as oportunidades são separadas por
+                    padrão em 3 colunas: <strong>NOVAS OPORTUNIDADES</strong>,
+                    <strong>DECLINADAS</strong> e <strong>ACEITAS</strong>. O usuário também pode adicionar nova
+                    colunas para melhor organização e mover as oportunidades entre as colunas.
+                </p>
+                <br>
+                <p style="text-align: center;">
+                    <img class="imgs-pages" src="img/oportunidades-page.jpeg" alt="Imagem da página Oportunidades">
+                    <br><span class="legenda-img">Print da página Oportunidades</span>
+                </p>
+                <br>
+                <p>
+                    Cada coluna tem uma comunicação via API com o Bot, onde o usuário pode realizar operações de
+                    aceitar ou declinar as oportunidades.
+                </p>
+                <br>
+                <div class="colunas-kaban-col">
+                    <img class="imgs-opotunidades" src="img/novas-oportunidades-table.jpeg"
+                        lt="Imagem da coluna Novas Oportunidades">
+                    <div class="col-kaban">
+                        <p>
+                            <strong>NOVAS OPORTUNIDADES</strong> - Nessa coluna são apresentadas as
+                            oportunidades
+                            que o Bot encontrou no portal da Petronect e enviou para o XSalle.
+                        </p>
+                        <br>
+                        <p>
+                            <strong>DECLINADAS</strong> - Nessa coluna são apresentadas as oportunidades que o
+                            usuário declinou.
+                        </p>
+                        <br>
+                        <p>
+                            <strong>ACEITAS</strong> - Nessa coluna são apresentadas as oportunidades que o
+                            usuário
+                            aceitou.
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    As informações preenchidas nos cards das oportunidades são enviadas pelo robô através de uma
+                    API
+                    para o banco de dados armazenado no AWS que armazena as informações como <i>"data types"</i>
+                    com nome de <a href="#" class="links-api">"get_listas oportunidade"</a> (que também é o nome
+                    da
+                    API).
+                </p>
+                <div>
+                    <p>
+                        <strong>Parent group's API get_listas oportunidade</strong> tem os seguintes dados
+                        armazenados
+                        pela API em data fields:
+                    </p>
+                    <ul class="data-fields-lista">
+                        <li>'s id_oportunidade</li>
+                        <li>'s id_lista</li>
+                        <li>'s nome</li>
+                        <li>'s id_petronect</li>
+                        <li>'s criterio_julgamento</li>
+                        <li>'s data_fim_periodo_cotacao</li>
+                        <li>'s moeda</li>
+                        <li>'s local_entrega</li>
+                        <li>'s tipo</li>
+                        <li>'s empresa</li>
+                        <li>'s cor</li>
+                        <li>'s ativo</li>
+                        <li>'s visualizada</li>
+                        <li>'s comentarios</li>
+                        <li>'s replicado_petronect</li>
+                        <li>'s raw body text</li>
+                    </uL>
+                </div>
+                <br>
+                <p>
+                    Para exibição do card da oportunidade da tabela, o sistema faz o seguinte Query:
+                </p>
+                <br>
+                <div class="flex-gap-div">
+                    <img class="img-query" src="img/query-oportunidades.png">
+                    <p style="font-size: 15px;">
+                        <strong>Data Type</strong> - Parent group's API get_listas oportunidade; <br>
+                        <strong>Field</strong> - 's id_petronect e 's nome;<br>
+                    </p>
+                </div>
+                <br>
+                <p>
+                    Ao mover o card da oportunidade para outra coluna, o sistema faz o seguinte Workflow:
+                    <img class="img-api-mover" src="img/workflow-mover-oportunidade.png"><br>
+                    <span style="font-size: 15px;">
+                        <strong>Step 1 -</strong> Exibe um loading na tela;<br>
+                        <strong>Step 2 -</strong> Faz uma requisição a <a href="#" class="links-api">"API Get
+                            Listas"</a> para executar a ação da coluna
+                        que o usuário moveu o card e mover o card no banco de dados;<br>
+                        <strong>Step 3 -</strong> Recarrega o elemento das oportunidades
+                        <i>"board_fapi_oportunidades"</i>; <br>
+                        <strong>Step 4 -</strong> Exibe as oportunidades filtradas de acordo com a coluna que o
+                        usuário moveu o card, para isso faz uma quesição a <a href="#" class="links-api">"API
+                            Get
+                            Listas"</a> para gerar a lista após a execução
+                        anterior; <br>
+                        <strong>Step 5 -</strong> Esconde o loading da tela; <br>
+                    </span>
+                </p>
+                <p style="text-align: center;">
+                    <strong>Edição/atualização de oportunidades:</strong> Ao clicar no card da oportunidade e/ou
+                    no
+                    ícone de
+                    edição, o seguinte modal é exibido:
+                    <img src="img/pop_up_oportunidade.png" alt="Imagem do modal de edição de oportunidade"
+                        class="modal-oportunidades">
+                </p>
+                <br>
+                <p>
+                    O modal é preenchido com as informações da oportunidade obtidas através da API <a href="#"
+                        class="links-api">"get_listas oportunidade"</a>,
+                    aqui o usuário consegue visualizar as informações da oportunidade e também pode editar as
+                    informações, além de abrir uma sala de colaboração
+                    e também ter detalhes de cotações.<br>
+                </p>
+                <br>
+                <p><strong>Modal Informações:</strong><br></p>
+                <p style="font-size: 16px; line-height: 26px;">
+                    <strong>Identificação:</strong> ID da oportunidade no portal da Petronect e nome da
+                    oportunidade
+                    (Query: Parent group's API get_listas oportunidade - 's id_petronect e 's nome);<br>
+                    <strong>Pertence á:</strong> Select com nome das listas do usuário (Query: Parent group's
+                    API
+                    get_listas - 's nome);<br>
+                    <strong>Moeda:</strong> Moeda da oportunidade (Query: Parent group's API get_listas
+                    oportunidade
+                    -
+                    's moeda);<br>
+                    <strong>Tags:</strong> Tags da oportunidade onde usuário configura na página de
+                    oportunidades.<br>
+                    <strong>Critério de Julgamento:</strong> Critério de julgamento da oportunidade (Query:
+                    Parent
+                    group's API get_listas oportunidade - 's criterio_julgamento);<br>
+                    <strong>Fim do Período:</strong> Data de fim do período de cotação da oportunidade (Query:
+                    Parent
+                    group's API get_listas oportunidade - 's data_fim_periodo_cotacao);<br>
+                    <strong>Local de Entrega:</strong> Local de entrega da oportunidade (Query: Parent group's
+                    API
+                    get_listas oportunidade - 's local_entrega);<br>
+                    <strong>Mensagem Geral:</strong> Comentário geral da oportunidade (Query: Parent group's API
+                    get_listas oportunidade - 's comentarios);<br>
+                    <strong>Itens:</strong> Listagem com Itens da oportunidade (Query: Parent group's API
+                    get_listas
+                    oportunidade - 's itens);<br>
+                    <strong>Número:</strong> Número da oportunidade (Query: Parent group's API get_listas
+                    oportunidade -
+                    's numero);<br>
+                    <strong>Categoria:</strong> Categoria da oportunidade (Query: Parent group's API get_listas
+                    oportunidade - 's categoria);<br>
+                    <strong>Descrição:</strong> Descrição da oportunidade (Query: Parent group's API get_listas
+                    oportunidade - 's descricao_longa);<br>
+                    <strong>Data da Remessa:</strong> Data da remessa (Query: Parent group's API get_listas
+                    oportunidade
+                    - 's data_remessa);<br>
+                    <strong>Unidade da Remessa:</strong> Unidade da remessa (Query: Parent group's API
+                    get_listas
+                    oportunidade - 's unidade_medida);<br>
+                    <strong>Quantidade:</strong> Quantidade da remessa (Query: Parent group's API get_listas
+                    oportunidade - 's quantidade);<br><br>
+
+                    <strong>Botões:</strong><br>
+                    <strong>Anexar:</strong> Botão para anexar arquivos na oportunidade;<br>
+                    <strong>Sala de colaboração:</strong> Botão para abrir uma sala de colaboração;<br>
+                    <strong>Cotação:</strong> Abre o modal com a cotação da oportunidade;<br><br>
+
+                    <strong>Anexos:</strong> Lista com os anexos da oportunidade, onde é exibido os arquivos de
+                    anexos
+                    enviado pelo bot através da API <a href="#" class="links-api">"get_anexos_oportunidade"</a>
+                    e
+                    também
+                    os arquivos anexados pelo usuário na edição da oportunidade;
+
+                </p>
+
+            </section>
+
+            <!-- Seção Cotações -->
+            <section class="section-style" id="cotacoes-page">
+                <h2 class="title-secao">COTAÇÕES</h3>
+                    <hr class="linha-divisoria" style="width: 120px;">
+                    <p>
+                        A página de cotações é onde o usuário pode visualizar as cotações das oportunidades
+                        recebidas.
+                        as cotações são apresentadas no formato lista, com opções de filtragem, ordenação e
+                        pesquisa.
+                    </p>
+                    <br>
+                    <p style="text-align: center;">
+                        <img class="imgs-pages" src="img/cotacoes-page.png" alt="Imagem da página Oportunidades">
+                        <br><span class="legenda-img">Print da página Cotações</span>
+                    </p>
+                    <p>
+                        A lista de cotações é um repetidor que é preenchido através dos dados de data souce:
+                        <strong>Parent group's Cotação</strong> e
+                        usa os data field's:
+
+                    <ul class="data-fields-lista">
+                        <li>'s id_item</li>
+                        <li>'s Creation Date</li>
+                        <li>'s Item Cotado</li>
+                    </uL>
+                    </p>
+                    <br>
+                    <p>
+                        Para exibição da cotação, basta no modal de oportunidade clicar no botão
+                        <strong>Cotação</strong>, após o click o sistema segue
+                        o workflow de abrir o modal de cotações, enviando os dados da API <a href="#"
+                            class="links-api">"get_listas oportunidade"</a>
+                        para o modal de cotações.
+                    </p>
+                    <br>
+                    <p style="text-align: center;">
+                        O seguinte modal é exibido:
+                        <img src="img/cotacoes-edit.png" alt="Imagem do modal de edição de oportunidade"
+                            class="modal-oportunidades">
+                    </p>
+                    <p><strong>Modal Informações:</strong><br></p>
+                    <p style="font-size: 16px; line-height: 26px;">
+                        <strong>Itens</strong> - Lista com os itens da oportunidade (Query: Parent group's API
+                        get_listas oportunidade - 's itens);<br>
+                        <strong>Número </strong> - Número da oportunidade (Query: Parent group's API get_listas
+                        oportunidade - 's numero);<br>
+                        <strong>Categoria </strong> - Categoria da oportunidade (Query: Parent group's API
+                        get_listas
+                        oportunidade - 's categoria);<br>
+                        <strong>Descrição</strong> - Descrição da oportunidade (Query: Parent group's API
+                        get_listas
+                        oportunidade - 's descricao_longa);<br>
+                        <strong>Faturamento Mínimo</strong> - Input para o usuário definir o faturamento
+                        mínimo;<br>
+                        <strong>Prazo de Entrega</strong> - Input para o usuário definir o prazo de entrega;<br>
+                        <strong>PartNumber</strong> - Input para o usuário definir o PartNumber;<br>
+                        <strong>Item Cotado</strong> - Input para o usuário definir o item cotado;<br>
+                        <strong>Texto do Material</strong> - Input para o usuário definir o texto do
+                        material;<br>
+                        <strong>Descrição Longa</strong> - Input para o usuário definir a descrição longa;<br>
+                        <strong>Preço</strong> - Input para o usuário definir o preço;<br>
+                        <strong>Original do material</strong> - Input para o usuário definir a originalidade do
+                        material;<br>
+                        <strong>NCM</strong> - Input para o usuário definir o NCM;<br>
+                        <strong>COFINS</strong> - Input para o usuário definir o COFINS;<br>
+                        <strong>IPI</strong> - Input para o usuário definir o IPI;<br>
+                        <strong>ICMS</strong> - Input para o usuário definir o ICMS;<br>
+                        <strong>Fabricante</strong> - Input para o usuário definir o fabricante;<br>
+                        <strong>Base de redução</strong> - Input para o usuário definir a base de redução;<br>
+                        <strong>PIS</strong> - Input para o usuário definir o PIS;<br><br>
+
+                        <strong>Botões:</strong><br>
+                        <strong>Salvar como Modelo</strong> - Botão para salvar a cotação como modelo para ser
+                        usada em
+                        outras oportunidades;<br>
+                        <strong>Salvar como Rascunho</strong> - Botão para salvar a cotação como rascunho;<br>
+                        <strong>Declinar</strong> - Botão para declinar a cotação;<br><br>
+
+                        <strong>Salvar</strong> - Botão para salvar e enviar a cotação;<br>
+                        <strong>Cancelar</strong> - Botão para cancelar a cotação;<br>
+                    </p>
+            </section>
+
+            <!-- Seção Colaboração -->
+            <section class="section-style" id="colaboracao-page">
+                <h3 class="title-secao">SALA DE COLABORAÇÃO</h3>
+                <hr class="linha-divisoria" style="width: 120px;">
+                <p>
+                    A Sala de colaboração é uma seção onde os usuários podem criar novos assuntos para discussão, baixar
+                    arquivos e gerar relatórios sobre as atividades da sala. É uma funcionalidade que facilita a
+                    comunicação e a troca de informações entre os participantes das oportunidades.
+                </p>
+                <br>
+                <p style="text-align: center;">
+                    <img class="imgs-pages" src="img/sala-colaboracao-page.png" alt="Imagem da página Dashboard">
+                    <br><span class="legenda-img">Print do modal de sala de colaboração</span>
+                </p>
+                <br>
+                <p>
+                    O modal da sala de colaboração é aberto clicando no botão "Sala de Colaboração" no modal de edição
+                    de oportunidade, os dados da sala de colaboração são obtidos através da API <a href="#"
+                        class="links-api">"get_sala_colaboracao"</a>.
+                </p>
+                <br>
+                <p><strong>Modal Informações:</strong><br></p>
+                <p style="font-size: 16px; line-height: 26px;">
+                    <strong>Identificação</strong> - ID da sala de colaboração (Query: P_sala de colaboração's tmp);<br>
+                    <strong>Assunto pretendido</strong> - Select para selecionar o assunto da sala;<br>
+                    <strong>Questionamento</strong> - Select para selecionar o questionamento da sala;<br>
+                    <strong>Mensagem</strong> - Área de texto para o usuário digitar a mensagem;<br><br>
+
+                    <strong>Linhas:</strong>
+                    <strong>Data</strong> - Data da mensagem (Query: P_sala de colaboração result assunto's
+                    data_criacao);<br>
+                    <strong>Assunto</strong> - Assunto da mensagem (Query: P_sala de colaboração result assunto's
+                    texto_assunto);<br>
+                    <strong>Criado por</strong> - Nome do usuário que criou a mensagem (Query: P_sala de colaboração
+                    result assunto's usuario);<br>
+                    <strong>Ícone de visualização</strong> - Ícone para visualizar a mensagem;<br>
+                </p>
+
+            </section>
+
+            <!-- Seção Login/Registro -->
+            <section class="section-style" id="login-page">
+                <h3 class="title-secao">LOGIN/CADASTRO</h3>
+                <hr class="linha-divisoria" style="width: 60px;">
+                <p>
+                    O XSalle possuí uma página de login e registro para os usuários, onde o usuário pode se
+                    cadastrar
+                    e/ou fazer login no sistema.
+                </p>
+                <p style="text-align: center;">
+                    <span style="font-size: 20px;font-weight: 600;">Login</span><br><br>
+                    <img src="img/login-page.png" alt="Imagem da página de login" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de login</span>
+                </p>
+                <br>
+                <p style="text-align: center;">
+                    <span style="font-size: 20px;font-weight: 600;">Registro</span><br><br>
+                    <img src="img/registro-page.png" alt="Imagem da página de registro" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de registro</span>
+                </p>
+                <br>
+                <p>
+                    As informações de login e registro são enviadas para o banco de dados através da API
+                    <a href="#" class="links-api">"create_empresa"</a> e também armazenadas nos Apps Datas "All
+                    empresas" e "All
+                    users".
+                </p>
+            </section>
+
+            <!-- Seção Usuários -->
+            <section class="section-style" id="users-page">
+                <h3 class="title-secao">USUÁRIOS</h3>
+                <hr class="linha-divisoria" style="width: 60px;">
+                <p>
+                    A página de usuários é uma listagem, onde o usuário com permissões consegue visualizar os
+                    usuários cadastrados e também editar seus dados, como foto, nome, email, empresa, etc.
+                </p>
+                <br>
+                <p style="text-align: center;">
+                    <img src="img/users-page.png" alt="Imagem da página de usuários" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de usuários</span>
+                </p>
+                <br>
+                <p>
+                    A listagem é alimentada pelo data source <strong>Parent group's User</strong> e usa os data
+                    field's:<br><br>
+                    <strong>Nome</strong> - Nome do usuário (Query: Parent group's User - 's name);<br>
+                    <strong>Email</strong> - Email do usuário (Query: Parent group's User - 's email);<br>
+                    <strong>Empresa</strong> - Empresa do usuário (Query: Parent group's User - 's nome_fantasia);<br>
+                    <strong>Data de Criação</strong> - Data de criação do usuário (Query: Parent group's User - Creation
+                    Date);<br>
+                    <br><br>
+                    Ao clicar na linha do usuário, a seguinte página de edição é exibida:<br>
+                </p>
+                <p style="text-align: center;">
+                    <img src="img/edit-user.png" alt="Imagem da página de edição de usuário" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de edição de usuário</span>
+                </p>
+                <br>
+                <p>
+                    Ao clicar no botão de Criar Usuário, o seguinte modal é exibido:<br>
+                </p>
+                <p style="text-align: center;">
+                    <img src="img/create-user.png" alt="Imagem da página de edição de usuário" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de criação de usuário</span>
+                </p>
+                <br>
+                <p>
+                    A criação e edição de usuários é operada através de workflows, que fazem alteram e registram os
+                    dados do usuário
+                    no tabela de "All Users" no App Data.
+                </p>
+            </section>
+
+            <!-- Seção Empresas -->
+            <section class="section-style" id="empresas-page">
+                <h3 class="title-secao">EMPRESAS</h3>
+                <hr class="linha-divisoria" style="width: 60px;">
+                <p>
+                    O XSalle possuí uma página de controle de empresas, onde o usuário com permissões consegue
+                    visualizar as empresas cadastradas e também editar seus dados, como nome fantasia, foto e CNPJ.
+                </p>
+                <p style="text-align: center;">
+                    <img src="img/empresas-page.png" alt="Imagem da página de empresas" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de empresas</span>
+                </p>
+                <br>
+                <p>
+                    As informações da empresa são enviadas para o banco de dados através da API <a href="#"
+                        class="links-api">"create_empresa"</a>
+                    A listagem é alimentada pelo data source <strong>Parent group's Empresa</strong> e usa os data
+                    field's:<br><br>
+                    <strong>Nome Fantasia</strong> - Nome fantasia da empresa (Query: Parent group's Empresa - 's
+                    razao_social);<br>
+                    <strong>CNPJ</strong> - CNPJ da empresa (Query: Parent group's Empresa - 's cnpj);<br>
+                    <strong>Data de Criação</strong> - Data de criação da empresa (Query: Parent group's Empresa -
+                    Creation Date);<br>
+                    <br><br>
+                    Ao clicar na linha da empresa, a seguinte página de edição é exibida:<br>
+                </p>
+                <p style="text-align: center;">
+                    <img src="img/edit-empresa.png" alt="Imagem da página de edição de empresa" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de edição de empresa</span>
+                </p>
+                <br>
+                <p>
+                    Ao clicar no botão de Criar Empresa, o seguinte modal é exibido:<br>
+                </p>
+                <p style="text-align: center;">
+                    <img src="img/create-empresa.png" alt="Imagem da página de edição de empresa" class="imgs-pages">
+                    <br><span class="legenda-img">Print da página de criação de empresa</span>
+                </p>
+                <br>
+                <p>
+                    A criação e edição de empresas é operada através de workflows, que fazem alteram e registram os
+                    dados da empresa no tabela de "All Empresas" no App Data.
+                </p>
+            </section>
+
+            <!-- Seta -->
+            <a href="#menu" class="seta-up">
+                <img src="img/seta.png" alt="Subir para o topo">
+            </a>
+            <!-- Seta -->
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function menu() {
+            var conteudoSite = document.querySelector('.conteudo-site')
+            var sidebar = document.querySelector('.sidebar')
+
+            sidebar.classList.toggle('active')
+            conteudoSite.classList.toggle('active')
+        }
+
+        function esconderMenu() {
+            var tamanhoTela = window.innerWidth;
+
+            if (tamanhoTela < "600") {
+                var sidebar = document.querySelector('.sidebar')
+                var conteudoSite = document.querySelector('.conteudo-site')
+
+                sidebar.classList.remove('active')
+                conteudoSite.classList.remove('active')
+            }
+        }
+
+        jQuery.noConflict();
+
+        $ = jQuery;
+
+        jQuery(document).ready(function ($) {
+            $('.menu-item').click(function () {
+                jQuery(this).find('.sub-menu').slideToggle();
+            });
+
+            $('.btn-accordion').click(function () {
+                var accordion_next = $(this).next('.content-accordion');
+                var accordion_icon = $(this).find('i');
+
+                //Toggle accordion item e trocar i do botão
+                accordion_next.slideToggle(function () {
+                    if (accordion_next.is(':visible')) {
+                        accordion_icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+                        accordion_next.css('height', '300px');
+                    } else {
+                        accordion_icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+                        accordion_next.css('height', '0px');
+                    }
+                });
+
+            });
+
+            $('.btn-accordion-data').click(function () {
+                var accordion_next = $(this).next('.data-fields');
+                var accordion_icon = $(this).find('i');
+
+                //Toggle accordion item e trocar i do botão
+                accordion_next.slideToggle(function () {
+                    if (accordion_next.is(':visible')) {
+                        accordion_icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+                        accordion_next.css('height', '300px');
+                    } else {
+                        accordion_icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+                        accordion_next.css('height', '0px');
+                    }
+                });
+            });
+
+            $('.btn-accordion-workflow').click(function () {
+                var accordion_next = $(this).next('.workflow-content');
+                var accordion_icon = $(this).find('i');
+
+                //Toggle accordion item e trocar i do botão
+                accordion_next.slideToggle(function () {
+                    if (accordion_next.is(':visible')) {
+                        accordion_icon.removeClass('fa-angle-down').addClass('fa-angle-up');
+                        accordion_next.css('height', '300px');
+                    } else {
+                        accordion_icon.removeClass('fa-angle-up').addClass('fa-angle-down');
+                        accordion_next.css('height', '0px');
+                    }
+                });
+            });
+
+            
+        });
+
+    </script>
+
+</body>
+
+</html>
